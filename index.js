@@ -45,10 +45,8 @@ function Airplane(name) {
     this.stomach = [];
   }
   Person.prototype.eat = function(eating){
-    if(this.stomach.length < 10){
-      if(eating===true){
-        this.stomach.push(eating);
-      }
+    if(this.stomach.length < 10){    
+        this.stomach.push(eating);    
     }   
   }
   Person.prototype.poop = function(){
@@ -57,6 +55,10 @@ function Airplane(name) {
   Person.prototype.toString = function(){
     return `${this.name}, ${this.age}`;
   }
+
+  const personOne = new Person('Yaping',36);
+  console.log(personOne);
+  console.log(personOne.toString());
  
  
 
