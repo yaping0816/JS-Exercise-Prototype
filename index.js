@@ -114,10 +114,10 @@ function Airplane(name) {
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. Implicit binding. The context is binding to the left of dot when you are using a method that on the object.
+    2. Explicit binding. We explicitly tell it what 'this' refers to by using '.call', '.apply' and '.bind'
+    3. New binding. When a constructor function is invoked, 'this' refers to the newly created object and returned by the constructor function.
+    4. Window binding. When none of these rules apply, 'this' refers to the window object unless strict mode applies which will return undefined
   */
   
   
