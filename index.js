@@ -39,13 +39,28 @@ function Airplane(name) {
           + It should return a string with `name` and `age`. Example: "Mary, 50"
   */
   
- function Person() {
-    
+ function Person(name,age) {
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
   }
- 
- 
+  Person.prototype.eat = function(eating){
+    if(this.stomach.length < 10){    
+        this.stomach.push(eating);    
+    }   
+  }
+  Person.prototype.poop = function(){
+    return this.stomach = [];
+  }
+  Person.prototype.toString = function(){
+    return `${this.name}, ${this.age}`;
+  }
 
-  
+  const personOne = new Person('Yaping',36);
+  console.log(personOne);
+  console.log(personOne.toString());
+ 
+ 
   
   
   
@@ -63,8 +78,21 @@ function Airplane(name) {
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
   
- function Car() {
-    
+ function Car(model,milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  Car.prototype.fill = function(gallons){
+    this.tank += gallons;
+  }
+  Car.prototype.drive = function(distance){
+    this.odometer += distance;
+    this.tank -= this.milesPerGallon;
+    if(this.tank <= 0){
+      return ` ran out of fuel at ${this.odometer} miles!`
+    }
   }
   
   
@@ -75,18 +103,28 @@ function Airplane(name) {
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby() {
-   
+ function Baby(name,age,favoriteToy) {
+   Person.call(this,name,age);
+   this.favoriteToy = favoriteToy;
+    // this.name = name;
+    // this.age = age;
+    // this.favoriteToy = favoriteToy;
+  }
+
+  Baby.prototype = Object.create(Person.prototype);
+
+  Baby.prototype.play = function(){
+    return `Playing with ${this.favoriteToy}`;
   }
  
   
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. Implicit binding. The context is binding to the left of dot when you are using a method that on the object.
+    2. Explicit binding. We explicitly tell it what 'this' refers to by using '.call', '.apply' and '.bind'
+    3. New binding. When a constructor function is invoked, 'this' refers to the newly created object and returned by the constructor function.
+    4. Window binding. When none of these rules apply, 'this' refers to the window object unless strict mode applies which will return undefined
   */
   
   
